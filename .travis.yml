@@ -5,6 +5,6 @@ python:
 install:
   - pip install . && pip install -r test_requirements.txt
 script:
-  - ./linters.sh && pytest --cov=usfm_references tests/
+  - ./linters.sh && pytest --cov usfm_references --cov-report term-missing tests/
 after_success:
   - coveralls
