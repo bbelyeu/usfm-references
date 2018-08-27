@@ -3,7 +3,8 @@ Test USFM validation
 """
 import pytest
 
-from usfm_references import valid_chapter, valid_chapter_or_intro, valid_usfm, valid_verse
+from usfm_references import (valid_chapter, valid_chapter_or_intro, valid_usfm,
+                             valid_verse)
 
 
 @pytest.mark.parametrize("ref,expect", [
