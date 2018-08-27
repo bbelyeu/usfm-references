@@ -24,10 +24,11 @@ Links
 * `USFM Standard Reference <http://paratext.org/about/usfm>`_
 
 """
-import re
 import ast
+import re
 import sys
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 from setuptools.command.test import test as TestCommand
 
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
@@ -75,8 +76,6 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules'
