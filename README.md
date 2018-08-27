@@ -4,7 +4,7 @@ A validator for USFM (Unified Standard Format Markers) Biblical references
 
 ## Requirements
 
-This project requires Python 3.3 or higher
+This project requires Python 3.5 or higher
 
 ## Installation
 
@@ -43,7 +43,7 @@ or intro reference
 
 ## Development
 
-This project was written with Python 3.6 and is tested in CI with Python 3.3-3.6.
+This project was written with Python 3.6 and is tested in CI with Python 3.5-3.6.
 One of these must be installed before developing and testing locally.
 
 On a mac you can use the following commands to get up and running.

@@ -8,6 +8,11 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
+"flake8" = "*"
+isort = "*"
+pycodestyle = "*"
+pylint = "*"
+wheel = "*"
 
 [requires]
 python_version = "3.6"
