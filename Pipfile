@@ -13,6 +13,7 @@ isort = "*"
 pycodestyle = "*"
 pylint = "*"
 wheel = "*"
+python-coveralls = "*"
 
 [requires]
 python_version = "3.6"
