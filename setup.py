@@ -1,29 +1,5 @@
 #!/usr/bin/env python
-"""
-USFM References Tools
-=====================
-
-Tools for working with USFM references in code.
-
-Setup
------
-
-.. code:: python
-
-    import usfm_references
-
-    usfm_references.valid('GEN.1.1')  # returns True
-    usfm_references.valid('BOO.1.1')  # returns False
-
-Links
-=====
-
-* `Documentation <https://pythonhosted.org/usfm-references/>`_
-* `Source Code <https://github.com/bbelyeu/usfm-references>`_
-* `Issues <https://github.com/bbelyeu/usfm-references/issues>`_
-* `USFM Standard Reference <http://paratext.org/about/usfm>`_
-
-"""
+"""Setup for distribution of USFM References package."""
 import ast
 import re
 import sys
@@ -33,9 +9,12 @@ from setuptools.command.test import test as TestCommand
 
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
 
-with open('usfm_references/__init__.py', 'rb') as f:
+with open('usfm_references/__init__.py', 'rb') as fh_init:
     version = str(ast.literal_eval(_version_re.search(
-        f.read().decode('utf-8')).group(1)))
+        fh_init.read().decode('utf-8')).group(1)))
+
+with open('README.md', 'rb') as fh_desc:
+    long_description = fh_desc.read().decode('utf-8')
 
 
 class PyTest(TestCommand):
@@ -62,7 +41,7 @@ setup(
     author='Brad Belyeu',
     author_email='bradleylamar@gmail.com',
     description='Tools to work with USFM references',
-    long_description=__doc__,
+    long_description=long_description,
     packages=find_packages(exclude=('tests',)),
     zip_safe=False,
     include_package_data=True,
