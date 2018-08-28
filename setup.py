@@ -42,6 +42,7 @@ setup(
     author_email='bradleylamar@gmail.com',
     description='Tools to work with USFM references',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=find_packages(exclude=('tests',)),
     zip_safe=False,
     include_package_data=True,
