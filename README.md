@@ -19,7 +19,7 @@ To install use
 
 Import one of the methods like
 
-    from usfm_references import valid_chapter, valid_chapter_or_intro, valid_usfm, valid_verse
+    from usfm_references import valid_chapter, valid_chapter_or_intro, valid_usfm, valid_verse, valid_multi_usfm
 
 The validation methods all start with `valid_`. They take a single parameter
 which should be a string representation of a USMF reference. And they all
@@ -42,6 +42,7 @@ The currently supported validators are:
 * `valid_chapter_or_intro` - Ensures the passed string is either a valid USFM chapter
 or intro reference
 * `valid_usfm` - Ensures the passed string is a valid USFM reference (can be verse, chapter, or intro)
+* `valid_multi_usfm` - Ensures that the passed string is a valid set of USFM reference (can be verse, chapter, or intro)
 * `valid_verse` - Ensures the passed string is a valid USFM verse reference
 
 ## Development

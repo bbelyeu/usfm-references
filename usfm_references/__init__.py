@@ -64,3 +64,18 @@ def valid_verse(ref):
         optionally followed by a period (.) and a (verse) number of any length.
     """
     return bool(re.match(VERSE, ref) and ref.split('.')[0] in BOOKS)
+
+
+def valid_multi_usfm(ref):
+    """
+    Succeeds if the given string is a validly structured set of UFM Bible references.
+    A valid, capitalized (English) book abbreviation,
+        followed by a period (.) and a (chapter) number of any length,
+        optionally followed by an underscore (_) and a (sub-chapter?) number of any length,
+        optionally followed by a period (.) and a (verse) number of any length.
+    Multiple verses are seperated by a plus (+)
+    Example Multi USFM ref (James1:1-5): JAS.1.1+JAS.1.2+JAS.1.3+JAS.1.4+JAS.1.5
+    """
+    if any([not valid_usfm(usfm) for usfm in ref.split('+')]):
+        return False
+    return True
