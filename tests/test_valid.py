@@ -93,6 +93,26 @@ def test_valid_verse(ref, expect):
     ('GEN.1.1_1+GEN.1.2_2', False),  # sub verses not allowed
     ('GEN+GEN', False),  # chapter required
 ])
-def test_valid_multi_usfm(ref, expect):
+def test_valid_multi_usfm_plus(ref, expect):
     """Test chapter reference validation."""
     assert valid_multi_usfm(ref) == expect
+
+
+@pytest.mark.parametrize("ref,expect", [
+    ('GEN.1.1,GEN.1.2,GEN.1.3,GEN.1.4', True),
+    ('GEN.1.1,GEN.1.2,GEN.1.3,GEN', False),
+    ('GEN.000000.000000,GEN.1.1', False),
+    ('1TI.300.9,1TI.1.1', True),
+    ('PSA.119.1176', False),
+    ('ZZZ.1.1,JA.1.1', False),
+    ('GEN.1_1,GEN.1_2', True),
+    ('GEN.1_9999,GEN.2_9999', True),
+    ('REV.1_1.9999,REV.1_2.9999', False),
+    ('Gen.1.1,Gen.1.2', False),  # must be capitalized
+    ('Gen.1.1b,Gen1.1c', False),  # alpha not allowed in verse
+    ('GEN.1.1_1,GEN.1.2_2', False),  # sub verses not allowed
+    ('GEN,GEN', False),  # chapter required
+])
+def test_valid_multi_usfm_comma(ref, expect):
+    """Test chapter reference validation."""
+    assert valid_multi_usfm(ref, delimiter=',') == expect
