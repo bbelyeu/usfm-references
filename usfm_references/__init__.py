@@ -3,13 +3,9 @@ USFM References Tools
 """
 import re
 
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 ANY_REF = re.compile(r'^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?(\.[0-9]{1,3})?|INTRO\d+)$')
-CHAPTER = re.compile(r'^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?$')
-CHAPTER_OR_INTRO = re.compile(r'^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?|INTRO\d+)$')
-SINGLE_CHAPTER_OR_VERSE = re.compile(r'^([A-Za-z]{3})\.([1-9]+\.{0,1}[1-9]*)$')
-VERSE = re.compile(r'^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?\.[0-9]{1,3}$')
 BOOKS = [
     'GEN', 'EXO', 'LEV', 'NUM', 'DEU', 'JOS', 'JDG', 'RUT', '1SA', '2SA', '1KI', '2KI', '1CH',
     '2CH', 'EZR', 'NEH', 'EST', 'JOB', 'PSA', 'PRO', 'ECC', 'SNG', 'ISA', 'JER', 'LAM', 'EZK',
@@ -18,8 +14,22 @@ BOOKS = [
     '2TH', '1TI', '2TI', 'TIT', 'PHM', 'HEB', 'JAS', '1PE', '2PE', '1JN', '2JN', '3JN', 'JUD',
     'REV', 'TOB', 'JDT', 'ESG', 'WIS', 'SIR', 'BAR', 'LJE', 'S3Y', 'SUS', 'BEL', '1MA', '2MA',
     '3MA', '4MA', '1ES', '2ES', 'MAN', 'PS2', 'ODA', 'PSS', 'EZA', '5EZ', '6EZ', 'DAG', 'PS3',
-    '2BA', 'LBA', '2MQ', '3MQ', 'REP', '4BA', 'LAO', 'LKA'
+    '2BA', 'LBA', '2MQ', '3MQ', 'REP', '4BA', 'LAO', 'LKA',
 ]
+CHAPTER = re.compile(r'^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?$')
+CHAPTER_OR_INTRO = re.compile(r'^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?|INTRO\d+)$')
+NT_BOOKS = [
+    'MAT', 'MRK', 'LUK', 'JHN', 'ACT', 'ROM', '1CO', '2CO', 'GAL', 'EPH', 'PHP', 'COL', '1TH',
+    '2TH', '1TI', '2TI', 'TIT', 'PHM', 'HEB', 'JAS', '1PE', '2PE', '1JN', '2JN', '3JN', 'JUD',
+    'REV',
+]
+OT_BOOKS = [
+    'GEN', 'EXO', 'LEV', 'NUM', 'DEU', 'JOS', 'JDG', 'RUT', '1SA', '2SA', '1KI', '2KI', '1CH',
+    '2CH', 'EZR', 'NEH', 'EST', 'JOB', 'PSA', 'PRO', 'ECC', 'SNG', 'ISA', 'JER', 'LAM', 'EZK',
+    'DAN', 'HOS', 'JOL', 'AMO', 'OBA', 'JON', 'MIC', 'NAM', 'HAB', 'ZEP', 'HAG', 'ZEC', 'MAL',
+]
+SINGLE_CHAPTER_OR_VERSE = re.compile(r'^([A-Za-z]{3})\.([1-9]+\.{0,1}[1-9]*)$')
+VERSE = re.compile(r'^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?\.[0-9]{1,3}$')
 
 
 def valid_chapter(ref):
