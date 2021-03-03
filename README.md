@@ -22,7 +22,7 @@ Import one of the methods like
     from usfm_references import valid_chapter, valid_chapter_or_intro, valid_usfm, valid_verse, valid_multi_usfm
 
 The validation methods all start with `valid_`. They take a single parameter
-which should be a string representation of a USMF reference. And they all
+which should be a string representation of a USFM reference. And they all
 return a boolean value representing whether the string was valid for the
 type that the method is validating against.
 
