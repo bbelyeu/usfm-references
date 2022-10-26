@@ -1,22 +1,20 @@
 #!/bin/bash
 
-echo "> running pycodestyle..."
-pycodestyle --max-line-length=99 --exclude='.eggs,build,dist' .
-if [ $? != 0 ]
-then
+echo "> running black..."
+black . --check
+if [ $? != 0 ]; then
     exit 1
 else
-    echo "pycodestyle looks good!"
+    echo "black code format looks good!"
 fi
 echo
 
-echo "> running flake8..."
-flake8 --exclude='.eggs,build,dist' --max-line-length=99
-if [ $? != 0 ]
-then
+echo "> running isort..."
+isort . --check --diff --settings-file pyproject.toml
+if [ $? != 0 ]; then
     exit 1
 else
-    echo "flake8 looks good!"
+    echo "isort looks good!"
 fi
 echo
 
@@ -28,14 +26,5 @@ if [ $? != 0 ] && [ $? != 32 ]; then
     exit 1
 else
     echo "pylint looks good!"
-fi
-echo
-
-echo "> running isort..."
-isort -c --diff
-if [ $? != 0 ]; then
-    exit 1
-else
-    echo "isort looks good!"
 fi
 echo

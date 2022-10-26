@@ -1,0 +1,9 @@
+black
+coverage
+isort
+pip-tools
+pylint
+pytest-cov
+pytest
+twine
+wheel

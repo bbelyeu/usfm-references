@@ -3,11 +3,11 @@
 [![Build Status](https://travis-ci.org/bbelyeu/usfm-references.svg?branch=master)](https://travis-ci.org/bbelyeu/usfm-references)
 [![Coverage Status](https://coveralls.io/repos/github/bbelyeu/usfm-references/badge.svg?branch=master)](https://coveralls.io/github/bbelyeu/usfm-references?branch=master)
 
-A validator for USFM (Unified Standard Format Markers) Biblical references
+A validator & lookup tool for USFM (Unified Standard Format Markers) Biblical references.
 
 ## Requirements
 
-This project requires Python 3.5 or higher
+This project requires Python 3.6 or higher
 
 ## Installation
 
@@ -45,40 +45,24 @@ or intro reference
 * `valid_multi_usfm` - Ensures that the passed string is a valid set of USFM reference (can be verse, chapter, or intro)
 * `valid_verse` - Ensures the passed string is a valid USFM verse reference
 
+Other methods include conversion such as `convert_book_to_canon`. Import like:
+
+    from usfm_references import convert_book_to_canon
+
+Conversion methods all start with `convert_` and the method names should be self-explanatory
+as far as what params go in and what is returned.
+
+`convert_book_to_canon` can be used like:
+
+    canon = convert_book_to_canon("GEN")
+    print(canon)  # "ot"
+
 ## Development
 
-This project was written with Python 3.6 and is tested in CI with Python 3.5-3.6.
+This project is tested in CI with Python 3.6-3.8.
 One of these must be installed before developing and testing locally.
 
-On a mac you can use the following commands to get up and running.
-``` bash
-brew install python3.6
-```
-otherwise run
-``` bash
-brew upgrade python3.6
-```
-to make sure you have an up to date version.
-
-This project uses [pipenv](https://docs.pipenv.org) for dependency management. Install pipenv
-``` bash
-pip3 install pipenv
-```
-
-setup the project env
-``` base
-pipenv install --three --dev
-```
-
-create a .env file using this sample
-``` bash
-export PYTHONPATH=`pwd`
-```
-
-now load virtualenv and any .env file
-```bash
-pipenv shell
-```
+This project uses [pip-tools](https://github.com/jazzband/pip-tools) for dependency management.
 
 ### Running tests
 
@@ -88,7 +72,7 @@ pipenv shell
 
 ### Before committing any code
 
-We have a pre-commit hook which should be setup.
+We have a pre-commit hook which can be used to run linters before committing.
 You can symlink it to run before each commit by changing directory to the repo and running
 
 ``` bash
