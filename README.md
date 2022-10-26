@@ -1,7 +1,7 @@
 # USFM-References
 
-[![Build Status](https://travis-ci.org/bbelyeu/usfm-references.svg?branch=master)](https://travis-ci.org/bbelyeu/usfm-references)
-[![Coverage Status](https://coveralls.io/repos/github/bbelyeu/usfm-references/badge.svg?branch=master)](https://coveralls.io/github/bbelyeu/usfm-references?branch=master)
+[![Build Status](https://travis-ci.org/bbelyeu/usfm-references.svg?branch=main)](https://travis-ci.org/bbelyeu/usfm-references)
+[![Coverage Status](https://coveralls.io/repos/github/bbelyeu/usfm-references/badge.svg?branch=main)](https://coveralls.io/github/bbelyeu/usfm-references?branch=main)
 
 A validator & lookup tool for USFM (Unified Standard Format Markers) Biblical references.
 
