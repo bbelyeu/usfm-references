@@ -1,9 +1,11 @@
 """
 USFM References Tools
 """
-import re
 
-__version__ = "1.3.0"
+import re
+import typing
+
+__version__ = "1.4.0"
 
 ANY_REF = re.compile(r"^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?(\.[0-9]{1,3})?|INTRO\d+)$")
 BOOKS = [
@@ -286,11 +288,30 @@ OT_BOOKS = [
 ]
 SINGLE_CHAPTER_OR_VERSE = re.compile(r"^([A-Za-z]{3})\.([1-9]+\.{0,1}[1-9]*)$")
 VERSE = re.compile(r"^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?\.[0-9]{1,3}$")
+VERSE_RANGE = re.compile(r"^[\d\s]*[-\w\s]+\d+:\d+-\d+$")
 
 
 def convert_book_to_canon(book_usfm: str) -> str:
     """Get the canon str from a book usfm."""
     return BOOK_CANON.get(book_usfm, "ap")
+
+
+# pylint: disable=inconsistent-return-statements
+def convert_verse_range(ref: str) -> typing.Optional[list]:
+    """Parse string to see if it is a range of verses."""
+    if re.match(VERSE_RANGE, ref):
+        book = re.findall(r"^([\d\s]*[-\w\s]+)\d+:\d+-\d+$", ref)[0]
+        chapter = re.findall(r"^[\d\s]*[-\w\s]+(\d+):\d+-\d+$", ref)[0]
+        first_verse = int(re.findall(r"^[\d\s]*[-\w\s]+\d+:(\d+)-\d+$", ref)[0])
+        last_verse = int(re.findall(r"^[\d\s]*[-\w\s]+\d+:\d+-(\d+)$", ref)[0])
+
+        hyphen_pos = ref.rfind("-")
+        first_ref = ref[0:hyphen_pos]
+        all_refs = [first_ref]
+        for verse_number in range(first_verse + 1, last_verse + 1):
+            all_refs.append(f"{book}{chapter}:{verse_number}")
+
+        return all_refs
 
 
 def valid_chapter(ref: str) -> bool:
