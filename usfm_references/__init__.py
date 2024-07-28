@@ -375,5 +375,7 @@ def valid_multi_usfm(ref: str, delimiter: str = "+") -> bool:
 
 
 def book_lookup (untitled):
-    if untitled == "Matt" or "MAT":
+    if untitled == "Matt" or untitled == "MAT":
         return "MAT"
+    if untitled in BOOKS:
+        return untitled
