@@ -11,7 +11,7 @@ def test_book_name_lookup():
 
 @pytest.mark.parametrize(
     "query,expect",
-    [(i, i) for i in usfm_references.BOOKS] + [("ZZZ", None), ("zzz", None)],
+    [(i, i) for i in usfm_references.BOOKS] + [(i.lower(), i) for i in usfm_references.BOOKS] + [("ZZZ", None), ("zzz", None)],
 )
 def test_book_lookup_by_usfm(query, expect):
     """This tests asserts books usfms can be looked up by their USFM"""
