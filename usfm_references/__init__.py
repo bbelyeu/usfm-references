@@ -7,117 +7,155 @@ import typing
 
 __version__ = "1.4.0"
 
-ANY_REF = re.compile(r"^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?(\.[0-9]{1,3})?|INTRO\d+)$")
-BOOK_CANON = {
-    "GEN": "ot",
-    "EXO": "ot",
-    "LEV": "ot",
-    "NUM": "ot",
-    "DEU": "ot",
-    "JOS": "ot",
-    "JDG": "ot",
-    "RUT": "ot",
-    "1SA": "ot",
-    "2SA": "ot",
-    "1KI": "ot",
-    "2KI": "ot",
-    "1CH": "ot",
-    "2CH": "ot",
-    "EZR": "ot",
-    "NEH": "ot",
-    "EST": "ot",
-    "JOB": "ot",
-    "PSA": "ot",
-    "PRO": "ot",
-    "ECC": "ot",
-    "SNG": "ot",
-    "ISA": "ot",
-    "JER": "ot",
-    "LAM": "ot",
-    "EZK": "ot",
-    "DAN": "ot",
-    "HOS": "ot",
-    "JOL": "ot",
-    "AMO": "ot",
-    "OBA": "ot",
-    "JON": "ot",
-    "MIC": "ot",
-    "NAM": "ot",
-    "HAB": "ot",
-    "ZEP": "ot",
-    "HAG": "ot",
-    "ZEC": "ot",
-    "MAL": "ot",
-    "MAT": "nt",
-    "MRK": "nt",
-    "LUK": "nt",
-    "JHN": "nt",
-    "ACT": "nt",
-    "ROM": "nt",
-    "1CO": "nt",
-    "2CO": "nt",
-    "GAL": "nt",
-    "EPH": "nt",
-    "PHP": "nt",
-    "COL": "nt",
-    "1TH": "nt",
-    "2TH": "nt",
-    "1TI": "nt",
-    "2TI": "nt",
-    "TIT": "nt",
-    "PHM": "nt",
-    "HEB": "nt",
-    "JAS": "nt",
-    "1PE": "nt",
-    "2PE": "nt",
-    "1JN": "nt",
-    "2JN": "nt",
-    "3JN": "nt",
-    "JUD": "nt",
-    "REV": "nt",
-    "TOB": "ap",
-    "JDT": "ap",
-    "ESG": "ap",
-    "WIS": "ap",
-    "SIR": "ap",
-    "BAR": "ap",
-    "LJE": "ap",
-    "S3Y": "ap",
-    "SUS": "ap",
-    "BEL": "ap",
-    "1MA": "ap",
-    "2MA": "ap",
-    "3MA": "ap",
-    "4MA": "ap",
-    "1ES": "ap",
-    "2ES": "ap",
-    "MAN": "ap",
-    "PS2": "ap",
-    "ODA": "ap",
-    "PSS": "ap",
-    "3ES": "ap",
-    "EZA": "ap",
-    "5EZ": "ap",
-    "6EZ": "ap",
-    "DAG": "ap",
-    "PS3": "ap",
-    "2BA": "ap",
-    "LBA": "ap",
-    "JUB": "ap",
-    "ENO": "ap",
-    "1MQ": "ap",
-    "2MQ": "ap",
-    "3MQ": "ap",
-    "REP": "ap",
-    "4BA": "ap",
-    "LAO": "ap",
-    "LKA": "nt",  # luke-acts combo
+# Abbreviations provided by https://www.logos.com/bible-book-abbreviations
+# Excluding periods on abbreviations, but functionality should allow it
+# Also excluded abbreviations that match USFM id
+BOOKS_DATA = {
+    "GEN": {"abbreviations": ["ge", "gn"], "canon": "ot"},
+    "EXO": {"abbreviations": ["ex", "exod"], "canon": "ot"},
+    "LEV": {"abbreviations": ["le", "lv"], "canon": "ot"},
+    "NUM": {"abbreviations": ["nu", "nm", "nb"], "canon": "ot"},
+    "DEU": {"abbreviations": ["deut", "de", "dt"], "canon": "ot"},
+    "JOS": {"abbreviations": ["josh", "jsh"], "canon": "ot"},
+    "JDG": {"abbreviations": ["judg", "jg", "jdgs"], "canon": "ot"},
+    "RUT": {"abbreviations": ["ru"], "canon": "ot"},
+    "1SA": {
+        "abbreviations": ["1 sam", "1 sm", "1 sa", "i sam", "i sa", "1sam", "1st sam", "first sam"],
+        "canon": "ot",
+    },
+    "2SA": {
+        "abbreviations": [
+            "2 sam",
+            "2 sm",
+            "2 sa",
+            "ii sam",
+            "ii sa",
+            "2sam",
+            "2nd sam",
+            "second sam",
+        ],
+        "canon": "ot",
+    },
+    "1KI": {
+        "abbreviations": ["1 kgs", "1 ki", "1kgs", "1kin", "i kgs", "i ki", "1st kgs", "first Kgs"],
+        "canon": "ot",
+    },
+    "2KI": {
+        "abbreviations": [
+            "2 kgs",
+            "2 ki",
+            "2kgs",
+            "2kin",
+            "ii kgs",
+            "ii ki",
+            "2nd kgs",
+            "second kgs",
+        ],
+        "canon": "ot",
+    },
+    "1CH": {"abbreviations": [], "canon": "ot"},
+    "2CH": {"abbreviations": [], "canon": "ot"},
+    "EZR": {"abbreviations": [], "canon": "ot"},
+    "NEH": {"abbreviations": [], "canon": "ot"},
+    "EST": {"abbreviations": [], "canon": "ot"},
+    "JOB": {"abbreviations": [], "canon": "ot"},
+    "PSA": {"abbreviations": [], "canon": "ot"},
+    "PRO": {"abbreviations": [], "canon": "ot"},
+    "ECC": {"abbreviations": [], "canon": "ot"},
+    "SNG": {"abbreviations": [], "canon": "ot"},
+    "ISA": {"abbreviations": [], "canon": "ot"},
+    "JER": {"abbreviations": [], "canon": "ot"},
+    "LAM": {"abbreviations": [], "canon": "ot"},
+    "EZK": {"abbreviations": [], "canon": "ot"},
+    "DAN": {"abbreviations": [], "canon": "ot"},
+    "HOS": {"abbreviations": [], "canon": "ot"},
+    "JOL": {"abbreviations": [], "canon": "ot"},
+    "AMO": {"abbreviations": [], "canon": "ot"},
+    "OBA": {"abbreviations": [], "canon": "ot"},
+    "JON": {"abbreviations": [], "canon": "ot"},
+    "MIC": {"abbreviations": [], "canon": "ot"},
+    "NAM": {"abbreviations": [], "canon": "ot"},
+    "HAB": {"abbreviations": [], "canon": "ot"},
+    "ZEP": {"abbreviations": [], "canon": "ot"},
+    "HAG": {"abbreviations": [], "canon": "ot"},
+    "ZEC": {"abbreviations": [], "canon": "ot"},
+    "MAL": {"abbreviations": [], "canon": "ot"},
+    "MAT": {"abbreviations": [], "canon": "nt"},
+    "MRK": {"abbreviations": [], "canon": "nt"},
+    "LUK": {"abbreviations": [], "canon": "nt"},
+    "JHN": {"abbreviations": [], "canon": "nt"},
+    "ACT": {"abbreviations": [], "canon": "nt"},
+    "ROM": {"abbreviations": [], "canon": "nt"},
+    "1CO": {"abbreviations": [], "canon": "nt"},
+    "2CO": {"abbreviations": [], "canon": "nt"},
+    "GAL": {"abbreviations": [], "canon": "nt"},
+    "EPH": {"abbreviations": [], "canon": "nt"},
+    "PHP": {"abbreviations": [], "canon": "nt"},
+    "COL": {"abbreviations": [], "canon": "nt"},
+    "1TH": {"abbreviations": [], "canon": "nt"},
+    "2TH": {"abbreviations": [], "canon": "nt"},
+    "1TI": {"abbreviations": [], "canon": "nt"},
+    "2TI": {"abbreviations": [], "canon": "nt"},
+    "TIT": {"abbreviations": [], "canon": "nt"},
+    "PHM": {"abbreviations": [], "canon": "nt"},
+    "HEB": {"abbreviations": [], "canon": "nt"},
+    "JAS": {"abbreviations": [], "canon": "nt"},
+    "1PE": {"abbreviations": [], "canon": "nt"},
+    "2PE": {"abbreviations": [], "canon": "nt"},
+    "1JN": {"abbreviations": [], "canon": "nt"},
+    "2JN": {"abbreviations": [], "canon": "nt"},
+    "3JN": {"abbreviations": [], "canon": "nt"},
+    "JUD": {"abbreviations": [], "canon": "nt"},
+    "REV": {"abbreviations": [], "canon": "nt"},
+    "TOB": {"abbreviations": [], "canon": "ap"},
+    "JDT": {"abbreviations": [], "canon": "ap"},
+    "ESG": {"abbreviations": [], "canon": "ap"},
+    "WIS": {"abbreviations": [], "canon": "ap"},
+    "SIR": {"abbreviations": [], "canon": "ap"},
+    "BAR": {"abbreviations": [], "canon": "ap"},
+    "LJE": {"abbreviations": [], "canon": "ap"},
+    "S3Y": {"abbreviations": [], "canon": "ap"},
+    "SUS": {"abbreviations": [], "canon": "ap"},
+    "BEL": {"abbreviations": [], "canon": "ap"},
+    "1MA": {"abbreviations": [], "canon": "ap"},
+    "2MA": {"abbreviations": [], "canon": "ap"},
+    "3MA": {"abbreviations": [], "canon": "ap"},
+    "4MA": {"abbreviations": [], "canon": "ap"},
+    "1ES": {"abbreviations": [], "canon": "ap"},
+    "2ES": {"abbreviations": [], "canon": "ap"},
+    "MAN": {"abbreviations": [], "canon": "ap"},
+    "PS2": {"abbreviations": [], "canon": "ap"},
+    "ODA": {"abbreviations": [], "canon": "ap"},
+    "PSS": {"abbreviations": [], "canon": "ap"},
+    "3ES": {"abbreviations": [], "canon": "ap"},
+    "EZA": {"abbreviations": [], "canon": "ap"},
+    "5EZ": {"abbreviations": [], "canon": "ap"},
+    "6EZ": {"abbreviations": [], "canon": "ap"},
+    "DAG": {"abbreviations": [], "canon": "ap"},
+    "PS3": {"abbreviations": [], "canon": "ap"},
+    "2BA": {"abbreviations": [], "canon": "ap"},
+    "LBA": {"abbreviations": [], "canon": "ap"},
+    "JUB": {"abbreviations": [], "canon": "ap"},
+    "ENO": {"abbreviations": [], "canon": "ap"},
+    "1MQ": {"abbreviations": [], "canon": "ap"},
+    "2MQ": {"abbreviations": [], "canon": "ap"},
+    "3MQ": {"abbreviations": [], "canon": "ap"},
+    "REP": {"abbreviations": [], "canon": "ap"},
+    "4BA": {"abbreviations": [], "canon": "ap"},
+    "LAO": {"abbreviations": [], "canon": "ap"},
+    "LKA": {"abbreviations": [], "canon": "nt"},  # luke-acts combo
 }
-BOOKS = list(BOOK_CANON.keys())
+
+# Denormalized data
+BOOKS = list(BOOKS_DATA.keys())
+AP_BOOKS = [usfm for usfm, data in BOOKS_DATA.items() if data["canon"].lower() == "ap"]
+NT_BOOKS = [usfm for usfm, data in BOOKS_DATA.items() if data["canon"].lower() == "nt"]
+OT_BOOKS = [usfm for usfm, data in BOOKS_DATA.items() if data["canon"].lower() == "ot"]
+
+# Validation regexes
+ANY_REF = re.compile(r"^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?(\.[0-9]{1,3})?|INTRO\d+)$")
 CHAPTER = re.compile(r"^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?$")
 CHAPTER_OR_INTRO = re.compile(r"^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?|INTRO\d+)$")
-NT_BOOKS = [usfm for usfm, canon in BOOK_CANON.items() if canon.lower() == "nt"]
-OT_BOOKS = [usfm for usfm, canon in BOOK_CANON.items() if canon.lower() == "ot"]
 SINGLE_CHAPTER_OR_VERSE = re.compile(r"^([A-Za-z]{3})\.([1-9]+\.{0,1}[1-9]*)$")
 VERSE = re.compile(r"^[1-6A-Z]{3}\.[0-9]{1,3}(_[0-9]+)?\.[0-9]{1,3}$")
 VERSE_RANGE = re.compile(r"^[\d\s]*[-\w\s]+\d+:\d+-\d+$")
@@ -125,7 +163,7 @@ VERSE_RANGE = re.compile(r"^[\d\s]*[-\w\s]+\d+:\d+-\d+$")
 
 def convert_book_to_canon(book_usfm: str) -> str:
     """Get the canon str from a book usfm."""
-    return BOOK_CANON.get(book_usfm, "ap")
+    return BOOKS_DATA.get(book_usfm, {}).get("canon", "ap")
 
 
 # pylint: disable=inconsistent-return-statements
@@ -206,8 +244,10 @@ def valid_multi_usfm(ref: str, delimiter: str = "+") -> bool:
     return True
 
 
-def book_lookup (book_query):
-    if book_query == "Matt" or book_query == "MAT":
+def book_lookup(book_query):
+    """Lookup a book USFM by a query."""
+    # replace the following 2 lines by looking at all book abbreviations
+    if book_query == "Matt":
         return "MAT"
     if book_query in BOOKS or book_query.upper() in BOOKS:
         return book_query.upper()
