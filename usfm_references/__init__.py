@@ -18,7 +18,7 @@ BOOKS_DATA = {
     "DEU": {"abbreviations": ["deut", "de", "dt"], "canon": "ot"},
     "JOS": {"abbreviations": ["josh", "jsh"], "canon": "ot"},
     "JDG": {"abbreviations": ["judg", "jg", "jdgs"], "canon": "ot"},
-    "RUT": {"abbreviations": ["ru"], "canon": "ot"},
+    "RUT": {"abbreviations": ["ru", "rth"], "canon": "ot"},
     "1SA": {
         "abbreviations": ["1 sam", "1 sm", "1 sa", "i sam", "i sa", "1sam", "1st sam", "first sam"],
         "canon": "ot",
@@ -583,8 +583,9 @@ def valid_multi_usfm(ref: str, delimiter: str = "+") -> bool:
 
 def book_lookup(book_query):
     """Lookup a book USFM by a query."""
-    # replace the following 2 lines by looking at all book abbreviations
-    if book_query == "Matt":
-        return "MAT"
+    book_query = book_query.replace(".", "")
     if book_query in BOOKS or book_query.upper() in BOOKS:
         return book_query.upper()
+    for usfm, data in BOOKS_DATA.items():
+        if book_query.lower() in data["abbreviations"]:
+            return usfm
