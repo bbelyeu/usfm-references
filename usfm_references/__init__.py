@@ -53,84 +53,236 @@ BOOKS_DATA = {
         ],
         "canon": "ot",
     },
-    "1CH": {"abbreviations": ["1 chron",
-"1 chr",
-"1 ch",
-"1chron",
-"1chr",
-"i chron",
-"i chr",
-"i ch",
-"1st chron",
-"first chron",], "canon": "ot"},
-    "2CH": {"abbreviations": [ "chron",
-"2 chr",
-"2 ch",
-"2chron",
-"2chr",
-"2ch",
-"ii chron",
-"ii chr",
-"ii ch",
-"2nd chronicles",
-"2nd chron",
-"second chronicles",
-"second chron",], "canon": "ot"},
-    "EZR": {"abbreviations": ["ezra",
-"ez",
-], "canon": "ot"},
-    "NEH": {"abbreviations": [
-"ne,"
-], "canon": "ot"},
-    "EST": {"abbreviations": [
-"esth",
-"es",
-], "canon": "ot"},
-    "JOB": {"abbreviations": ["jb",], "canon": "ot"},
-    "PSA": {"abbreviations": ["ps",
-"psalm",
-"pslm",
-"psm",
-"pss",], "canon": "ot"},
-    "PRO": {"abbreviations": ["prov",
-"prv",
-"pr",], "canon": "ot"},
-    "ECC": {"abbreviations": ["eccles",
-"eccle",
-"ec",
-"qoh",
-], "canon": "ot"},
-    "SNG": {"abbreviations": ["song",
-"song of songs",
-"sos",
-"so",
-"canticle of canticles",
-"canticles",
-"cant",
-], "canon": "ot"},
-    "ISA": {"abbreviations": ["is",], "canon": "ot"},
-    "JER": {"abbreviations": ["je", "jr",], "canon": "ot"},
-    "LAM": {"abbreviations": ["la",], "canon": "ot"},
-    "EZK": {"abbreviations": ["ezek", "eze," ], "canon": "ot"},
-    "DAN": {"abbreviations": ["da", "dn",], "canon": "ot"},
-    "HOS": {"abbreviations": ["ho",], "canon": "ot"},
-    "JOL": {"abbreviations": ["jl",], "canon": "ot"},
-    "AMO": {"abbreviations": ["am",], "canon": "ot"},
-    "OBA": {"abbreviations": ["obad", "ob",], "canon": "ot"},
-    "JON": {"abbreviations": ["jnh",], "canon": "ot"},
-    "MIC": {"abbreviations": ["mc",], "canon": "ot"},
-    "NAM": {"abbreviations": ["na",], "canon": "ot"},
-    "HAB": {"abbreviations": ["hb",], "canon": "ot"},
-    "ZEP": {"abbreviations": ["zp", "zeph",], "canon": "ot"},
-    "HAG": {"abbreviations": ["hg",], "canon": "ot"},
-    "ZEC": {"abbreviations": ["zech", "zc",], "canon": "ot"},
-    "MAL": {"abbreviations": ["ml",], "canon": "ot"},
-    "MAT": {"abbreviations": ["matt", "mt",], "canon": "nt"},
-    "MRK": {"abbreviations": ["mar", "mk", "mr",], "canon": "nt"},
+    "1CH": {
+        "abbreviations": [
+            "1 chron",
+            "1 chr",
+            "1 ch",
+            "1chron",
+            "1chr",
+            "i chron",
+            "i chr",
+            "i ch",
+            "1st chron",
+            "first chron",
+        ],
+        "canon": "ot",
+    },
+    "2CH": {
+        "abbreviations": [
+            "chron",
+            "2 chr",
+            "2 ch",
+            "2chron",
+            "2chr",
+            "2ch",
+            "ii chron",
+            "ii chr",
+            "ii ch",
+            "2nd chronicles",
+            "2nd chron",
+            "second chronicles",
+            "second chron",
+        ],
+        "canon": "ot",
+    },
+    "EZR": {
+        "abbreviations": [
+            "ezra",
+            "ez",
+        ],
+        "canon": "ot",
+    },
+    "NEH": {"abbreviations": ["ne,"], "canon": "ot"},
+    "EST": {
+        "abbreviations": [
+            "esth",
+            "es",
+        ],
+        "canon": "ot",
+    },
+    "JOB": {
+        "abbreviations": [
+            "jb",
+        ],
+        "canon": "ot",
+    },
+    "PSA": {
+        "abbreviations": [
+            "ps",
+            "psalm",
+            "pslm",
+            "psm",
+            "pss",
+        ],
+        "canon": "ot",
+    },
+    "PRO": {
+        "abbreviations": [
+            "prov",
+            "prv",
+            "pr",
+        ],
+        "canon": "ot",
+    },
+    "ECC": {
+        "abbreviations": [
+            "eccles",
+            "eccle",
+            "ec",
+            "qoh",
+        ],
+        "canon": "ot",
+    },
+    "SNG": {
+        "abbreviations": [
+            "song",
+            "song of songs",
+            "sos",
+            "so",
+            "canticle of canticles",
+            "canticles",
+            "cant",
+        ],
+        "canon": "ot",
+    },
+    "ISA": {
+        "abbreviations": [
+            "is",
+        ],
+        "canon": "ot",
+    },
+    "JER": {
+        "abbreviations": [
+            "je",
+            "jr",
+        ],
+        "canon": "ot",
+    },
+    "LAM": {
+        "abbreviations": [
+            "la",
+        ],
+        "canon": "ot",
+    },
+    "EZK": {"abbreviations": ["ezek", "eze,"], "canon": "ot"},
+    "DAN": {
+        "abbreviations": [
+            "da",
+            "dn",
+        ],
+        "canon": "ot",
+    },
+    "HOS": {
+        "abbreviations": [
+            "ho",
+        ],
+        "canon": "ot",
+    },
+    "JOL": {
+        "abbreviations": [
+            "jl",
+        ],
+        "canon": "ot",
+    },
+    "AMO": {
+        "abbreviations": [
+            "am",
+        ],
+        "canon": "ot",
+    },
+    "OBA": {
+        "abbreviations": [
+            "obad",
+            "ob",
+        ],
+        "canon": "ot",
+    },
+    "JON": {
+        "abbreviations": [
+            "jnh",
+        ],
+        "canon": "ot",
+    },
+    "MIC": {
+        "abbreviations": [
+            "mc",
+        ],
+        "canon": "ot",
+    },
+    "NAM": {
+        "abbreviations": [
+            "na",
+        ],
+        "canon": "ot",
+    },
+    "HAB": {
+        "abbreviations": [
+            "hb",
+        ],
+        "canon": "ot",
+    },
+    "ZEP": {
+        "abbreviations": [
+            "zp",
+            "zeph",
+        ],
+        "canon": "ot",
+    },
+    "HAG": {
+        "abbreviations": [
+            "hg",
+        ],
+        "canon": "ot",
+    },
+    "ZEC": {
+        "abbreviations": [
+            "zech",
+            "zc",
+        ],
+        "canon": "ot",
+    },
+    "MAL": {
+        "abbreviations": [
+            "ml",
+        ],
+        "canon": "ot",
+    },
+    "MAT": {
+        "abbreviations": [
+            "matt",
+            "mt",
+        ],
+        "canon": "nt",
+    },
+    "MRK": {
+        "abbreviations": [
+            "mar",
+            "mk",
+            "mr",
+        ],
+        "canon": "nt",
+    },
     "LUK": {"abbreviations": ["lk"], "canon": "nt"},
-    "JHN": {"abbreviations": ["jon", "jn",], "canon": "nt"},
-    "ACT": {"abbreviations": ["ac",], "canon": "nt"},
-    "ROM": {"abbreviations": ["ro",], "canon": "nt"},
+    "JHN": {
+        "abbreviations": [
+            "jon",
+            "jn",
+        ],
+        "canon": "nt",
+    },
+    "ACT": {
+        "abbreviations": [
+            "ac",
+        ],
+        "canon": "nt",
+    },
+    "ROM": {
+        "abbreviations": [
+            "ro",
+        ],
+        "canon": "nt",
+    },
     "1CO": {
         "abbreviations": ["1 cor", "1 co", "i cor", "i co", "1cor", "1corinthians"],
         "canon": "nt",
