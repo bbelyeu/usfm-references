@@ -59,7 +59,7 @@ as far as what params go in and what is returned.
 
 ## Development
 
-This project is tested in CI with Python 3.6-3.8.
+This project is tested in CI with Python 3.6-3.11.
 One of these must be installed before developing and testing locally.
 
 This project uses [pip-tools](https://github.com/jazzband/pip-tools) for dependency management.

@@ -5,7 +5,7 @@ USFM References Tools
 import re
 import typing
 
-__version__ = "1.4.0"
+__version__ = "1.4.1"
 
 ANY_REF = re.compile(r"^[1-9A-Z]{3}\.([0-9]{1,3}(_[0-9]+)?(\.[0-9]{1,3})?|INTRO\d+)$")
 BOOKS = [
@@ -102,13 +102,18 @@ BOOKS = [
     "PS3",
     "2BA",
     "LBA",
+    "JUB",
+    "ENO",
+    "1MQ",
     "2MQ",
     "3MQ",
     "REP",
     "4BA",
     "LAO",
     "LKA",
+    "3ES",
 ]
+
 BOOK_CANON = {
     "GEN": "ot",
     "EXO": "ot",
